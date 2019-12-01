@@ -16,7 +16,7 @@ namespace silla {
 class TaskProcessorManager {
   public:
     TaskProcessorManager(const int& size) noexcept;
-    ~TaskProcessorManager() noexcept(false);
+    ~TaskProcessorManager();
 
     void Assign(const Task& task) noexcept;
     

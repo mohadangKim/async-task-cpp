@@ -19,7 +19,7 @@ TaskProcessor::TaskProcessor(const $<TaskQueue>& task_queue) noexcept
   });
 }
 
-TaskProcessor::~TaskProcessor() noexcept(false) {
+TaskProcessor::~TaskProcessor() {
   if(is_processing_) {
     throw TaskUncompletedException();
   } else {

@@ -14,7 +14,7 @@ TaskProcessorManager::TaskProcessorManager(const int& size) noexcept
   }
 }
 
-TaskProcessorManager::~TaskProcessorManager() noexcept(false) {
+TaskProcessorManager::~TaskProcessorManager() {
   pool_.clear();
 }
 

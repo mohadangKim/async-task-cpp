@@ -21,7 +21,7 @@ class TaskQueue {
     };
 
     void PushBack(const Task& task) noexcept;
-    Task Pop() noexcept(false);
+    Task Pop();
     void Interrupt() noexcept;
 
     int Size() noexcept;

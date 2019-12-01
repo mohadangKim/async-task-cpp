@@ -23,7 +23,7 @@ class TaskProcessor {
     };
 
     TaskProcessor(const $<TaskQueue>& task_queue) noexcept;
-    ~TaskProcessor() noexcept(false);
+    ~TaskProcessor();
     
     bool IsProcessing() const noexcept;
 

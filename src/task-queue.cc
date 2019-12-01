@@ -11,7 +11,7 @@ void TaskQueue::PushBack(const Task& task) noexcept {
   conv_.notify_one();
 }
 
-Task TaskQueue::Pop() noexcept(false) {
+Task TaskQueue::Pop() {
   std::unique_lock<std::mutex> lock(m_);
   conv_.wait(lock, [=](){
     if(is_interrupted_) {
