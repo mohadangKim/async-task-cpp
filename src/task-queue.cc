@@ -27,7 +27,7 @@ Task TaskQueue::Pop() {
 void TaskQueue::Interrupt() noexcept {
   std::unique_lock<std::mutex> lock(m_);
   is_interrupted_ = true;
-  conv_.notify_one();
+  conv_.notify_all();
 }
 
 int TaskQueue::Size() noexcept {

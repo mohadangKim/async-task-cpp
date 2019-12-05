@@ -1,17 +1,15 @@
 #include <async-task/task-processor.hh>
-#include <chrono>
-#include <iostream>
 
 
 using namespace silla;
 
 TaskProcessor::TaskProcessor(const $<TaskQueue>& task_queue) noexcept
-    : task_queue_(task_queue)
+    : task_queue_(task_queue), is_processing_(false)
 {
   thread_ = new$<std::thread>([&](){
     try {
       while(true) {
-          Process(task_queue_->Pop());
+        Process(task_queue_->Pop());
       }
     } catch (const TaskQueue::InterruptedException& e) {
       return;
@@ -24,7 +22,7 @@ TaskProcessor::~TaskProcessor() {
     throw TaskUncompletedException();
   } else {
     task_queue_->Interrupt();
-    thread_->detach();
+    thread_->join();
   }
 }
 

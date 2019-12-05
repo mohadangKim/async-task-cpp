@@ -1,5 +1,3 @@
-#include <iostream>
-#include <chrono>
 #include <async-task/task-processor-manager.hh>
 
 
@@ -12,10 +10,6 @@ TaskProcessorManager::TaskProcessorManager(const int& size) noexcept
   for(int i = 0; i < size; i++) {
     pool_[i] = new$<TaskProcessor>(task_queue_);
   }
-}
-
-TaskProcessorManager::~TaskProcessorManager() {
-  pool_.clear();
 }
 
 void TaskProcessorManager::Assign(const Task& task) noexcept {
