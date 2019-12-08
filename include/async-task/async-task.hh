@@ -10,9 +10,10 @@ namespace silla {
 class AsyncTask {
   public:
     static void Execute(const Task& task) noexcept;
+    static int GetThreadPoolSize() noexcept;
 
   private:  
-    static TaskProcessorManager MANAGER_;
+    static TaskProcessorManager Manager_;
 };
 
 }

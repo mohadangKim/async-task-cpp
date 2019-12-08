@@ -16,12 +16,14 @@ namespace silla {
 class TaskProcessorManager {
   public:
     TaskProcessorManager(const int& size) noexcept;
+    ~TaskProcessorManager() noexcept;
 
     void Assign(const Task& task) noexcept;
+    int GetTaskProcessorPoolSize() const noexcept;
     
   private:
     $<TaskQueue> task_queue_;
-    std::vector<$<TaskProcessor>> pool_;
+    std::vector<$<TaskProcessor>> task_processor_pool_;
 };
 
 }

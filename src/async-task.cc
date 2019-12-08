@@ -4,8 +4,12 @@
 using namespace silla;
 
 TaskProcessorManager AsyncTask::
-    MANAGER_(std::thread::hardware_concurrency() + 1);
+    Manager_((std::thread::hardware_concurrency() * 2) + 1);
 
 void AsyncTask::Execute(const Task& task) noexcept {
-  MANAGER_.Assign(task);
+  Manager_.Assign(task);
+}
+
+int AsyncTask::GetThreadPoolSize() noexcept {
+  return Manager_.GetTaskProcessorPoolSize();
 }

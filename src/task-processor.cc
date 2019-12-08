@@ -21,7 +21,6 @@ TaskProcessor::~TaskProcessor() {
   if(is_processing_) {
     throw TaskUncompletedException();
   } else {
-    task_queue_->Interrupt();
     thread_->join();
   }
 }

@@ -4,14 +4,22 @@
 using namespace silla;
 
 TaskProcessorManager::TaskProcessorManager(const int& size) noexcept
-  : pool_(size)
+  : task_processor_pool_(size)
 {
   task_queue_ = new$<TaskQueue>();
   for(int i = 0; i < size; i++) {
-    pool_[i] = new$<TaskProcessor>(task_queue_);
+    task_processor_pool_[i] = new$<TaskProcessor>(task_queue_);
   }
+}
+
+TaskProcessorManager::~TaskProcessorManager() noexcept {
+  task_queue_->Interrupt();
 }
 
 void TaskProcessorManager::Assign(const Task& task) noexcept {
   task_queue_->PushBack(task);
+}
+
+int TaskProcessorManager::GetTaskProcessorPoolSize() const noexcept {
+  return task_processor_pool_.size();
 }
