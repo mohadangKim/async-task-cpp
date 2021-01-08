@@ -20,6 +20,7 @@ class TaskProcessorManager {
 
     void Assign(const Task& task) noexcept;
     int GetTaskProcessorPoolSize() const noexcept;
+    void Interrupt() noexcept;
     
   private:
     $<TaskQueue> task_queue_;

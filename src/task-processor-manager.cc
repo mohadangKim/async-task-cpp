@@ -13,7 +13,7 @@ TaskProcessorManager::TaskProcessorManager(const int& size) noexcept
 }
 
 TaskProcessorManager::~TaskProcessorManager() noexcept {
-  task_queue_->Interrupt();
+  Interrupt();
 }
 
 void TaskProcessorManager::Assign(const Task& task) noexcept {
@@ -22,4 +22,10 @@ void TaskProcessorManager::Assign(const Task& task) noexcept {
 
 int TaskProcessorManager::GetTaskProcessorPoolSize() const noexcept {
   return task_processor_pool_.size();
+}
+
+void TaskProcessorManager::Interrupt() noexcept {
+  if (task_queue_ != nullptr) {
+    task_queue_->Interrupt();
+  }
 }

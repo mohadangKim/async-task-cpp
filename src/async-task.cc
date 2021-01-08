@@ -13,3 +13,7 @@ void AsyncTask::Execute(const Task& task) noexcept {
 int AsyncTask::GetThreadPoolSize() noexcept {
   return Manager_.GetTaskProcessorPoolSize();
 }
+
+void AsyncTask::Interrupt() noexcept {
+  Manager_.Interrupt();
+}
