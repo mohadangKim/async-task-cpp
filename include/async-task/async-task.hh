@@ -11,6 +11,7 @@ class AsyncTask {
   public:
     static void Execute(const Task& task) noexcept;
     static int GetThreadPoolSize() noexcept;
+    static void Interrupt() noexcept;
 
   private:  
     static TaskProcessorManager Manager_;
