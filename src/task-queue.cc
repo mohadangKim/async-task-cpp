@@ -3,6 +3,10 @@
 
 using namespace silla;
 
+TaskQueue::TaskQueue() noexcept {
+  is_interrupted_ = false;
+}
+
 void TaskQueue::PushBack(const Task& task) noexcept {
   {
     std::unique_lock<std::mutex> lock(m_);
